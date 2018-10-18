@@ -1,0 +1,23 @@
+---
+- name: Download WordPress  
+  copy: 
+    src: {{ path_to_artifact }} 
+    dest: /tmp/wordpress.tar.gz
+  become: yes
+
+- name: Remove old files
+  file: wordpress/
+  state: absent
+
+- name: Extract WordPress  
+  unarchive: 
+    src: /tmp/wordpress.tar.gz 
+    dest: /var/www/
+    copy: no 
+  become: yes
+
+- name: Update WordPress config file
+  template:
+    src: wp-config.php.j2
+    dest: /var/www/wordpress/wp-config.php
+  become: yes
