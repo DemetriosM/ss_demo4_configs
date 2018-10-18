@@ -3,13 +3,13 @@
   copy: 
     src: "{{ path_to_artifact }}" 
     dest: /tmp/wordpress.tar.gz
-    remote_src: yes
   become: yes
 
 - name: Remove old files
   file: 
     path: /var/www/wordpress/
     state: absent
+  become: yes
 
 - name: Extract WordPress  
   unarchive: 
