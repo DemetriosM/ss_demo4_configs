@@ -3,6 +3,6 @@ path_to_artifact: PATH_TO_ARTIFACT
 
 #DB
 #mysql_ip: 193.105.7.136
-#wp_mysql_db: 
-#wp_mysql_user: 
-#wp_mysql_password:  
+wp_mysql_db: 
+wp_mysql_user: 
+wp_mysql_password:  
