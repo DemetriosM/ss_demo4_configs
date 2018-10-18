@@ -1,13 +1,15 @@
 ---
 - name: Download WordPress  
   copy: 
-    src: {{ path_to_artifact }} 
+    src: "{{ path_to_artifact }}" 
     dest: /tmp/wordpress.tar.gz
+    remote_src: yes
   become: yes
 
 - name: Remove old files
-  file: wordpress/
-  state: absent
+  file: 
+    path: /var/www/wordpress/
+    state: absent
 
 - name: Extract WordPress  
   unarchive: 
