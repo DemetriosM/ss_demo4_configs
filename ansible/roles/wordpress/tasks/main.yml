@@ -7,24 +7,24 @@
 
 - name: Remove old files
   file: 
-    path: /var/www/wordpress/
+    path: /var/www/html/
     state: absent
   become: yes
 
 - name: Create directory fo wordpress
   file:
-    path: /var/www/wordpress
+    path: /var/www/html
     state: directory
 
 - name: Extract WordPress  
   unarchive: 
     src: /tmp/wordpress.tar.gz 
-    dest: /var/www/wordpress
+    dest: /var/www/html
     copy: no 
   become: yes
 
 - name: Update WordPress config file
   template:
     src: wp-config.php.j2
-    dest: /var/www/wordpress/wp-config.php
+    dest: /var/www/html/wp-config.php
   become: yes
