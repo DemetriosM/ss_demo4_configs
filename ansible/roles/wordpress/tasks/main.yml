@@ -11,6 +11,11 @@
     state: absent
   become: yes
 
+- name: Create directory fo wordpress
+  file:
+    path: /var/www/wordpress
+    state: directory
+
 - name: Extract WordPress  
   unarchive: 
     src: /tmp/wordpress.tar.gz 
