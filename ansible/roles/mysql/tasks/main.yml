@@ -3,7 +3,6 @@
   apt: 
     name: "{{ item }}"
     state: present
-  become: yes
   with_items:
     - python-mysqldb
     - mysql-server
@@ -13,7 +12,6 @@
   mysql_db: 
     name: "{{ wp_mysql_db }}"
     state: present
-  become: yes
 
 - name: Create mysql user
   mysql_user: 
@@ -22,7 +20,6 @@
     priv: '*.*:ALL,GRANT'
     host: '%'
     state: present
-  become: yes
 
 - name: Bind IP MySQL
   ini_file:
@@ -31,4 +28,3 @@
     option: bind-address
     value: 0.0.0.0
   notify: restart MySQL
-  become: yes

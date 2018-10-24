@@ -3,13 +3,11 @@
   copy: 
     src: "{{ path_to_artifact }}" 
     dest: /tmp/wordpress.tar.gz
-  become: yes
 
 - name: Remove old files
   file: 
     path: /var/www/html/
     state: absent
-  become: yes
 
 - name: Create directory fo wordpress
   file:
@@ -21,10 +19,8 @@
     src: /tmp/wordpress.tar.gz 
     dest: /var/www/html
     copy: no 
-  become: yes
 
 - name: Update WordPress config file
   template:
     src: wp-config.php.j2
     dest: /var/www/html/wp-config.php
-  become: yes
